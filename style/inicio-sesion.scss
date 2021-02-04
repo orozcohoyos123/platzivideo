@@ -1,13 +1,21 @@
+$blanco: white;
+$tamaño-letra-estandar: 14px;
+
+@mixin flex($align){
+  display: flex;
+  align-items: $align;
+}
+
 body {
   margin: 0;
   font-family: "Muli", sans-serif;
 }
 
 .header {
-  display: flex;
-  align-items: center;
+  @include flex(center);
+
   background-color: #21c08b;
-  color: white;
+  color: $blanco;
   height: 100px;
   justify-content: space-between;
   top: 0px;
@@ -20,8 +28,8 @@ body {
 }
 
 .login {
-  display: flex;
-  align-items: center;
+  @include flex(center);
+  
   background: linear-gradient(#21c08b, #ab88ff);
   justify-content: center;
   flex-direction: column;
@@ -31,47 +39,48 @@ body {
 
 .login__container {
   background: rgba(255, 255, 255, 0.1);
-  border: 2px solid white;
+  border: 2px solid $blanco;
   border-radius: 40px;
-  color: white;
+  color: $blanco;
   padding: 60px 68px 40px;
   min-height: 700px;
   width: 300px;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  -webkit-box-shadow: 10px 10px 23px -9px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 10px 10px 23px -9px rgba(0, 0, 0, 0.75);
-  box-shadow: 10px 10px 23px -9px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 10px 10px 23px -9px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 23px -9px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 23px -9px rgba(0,0,0,0.75);
 }
 
 .login__container--form {
   display: flex;
   flex-direction: column;
-}
-.login__container--form label {
-  font-size: 14px;
+  label {
+    font-size: $tamaño-letra-estandar;
+  }
 }
 
 .login__container--remember-me {
-  color: white;
+  color: $blanco;
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-}
-.login__container--remember-me a {
-  color: white;
-  font-size: 14px;
-  text-decoration: none;
-}
-.login__container--remember-me a:hover {
-  text-decoration: underline;
+  a {
+    color: $blanco;
+    font-size: $tamaño-letra-estandar;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
 }
 
 .login__container--social-media > div {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
+  @include flex(center);
+  
+  font-size: $tamaño-letra-estandar;
   margin-bottom: 10px;
 }
 
@@ -81,24 +90,27 @@ body {
 }
 
 .login__container--register {
-  font-size: 14px;
+  font-size: $tamaño-letra-estandar;
+
+  a {
+    color: $blanco;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
 }
-.login__container--register a {
-  color: white;
-  font-size: 16px;
-  text-decoration: none;
-  font-weight: bold;
-}
-.login__container--register a:hover {
-  text-decoration: underline;
-}
+
 
 .input {
   background-color: transparent;
   border-left: 0px;
   border-right: 0px;
   border-top: 0px;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid $blanco;
   font-family: "Muli", sans-serif;
   font-size: 16px;
   margin-bottom: 20px;
@@ -108,14 +120,14 @@ body {
 }
 
 ::placeholder {
-  color: white;
+  color: $blanco;
 }
 
 .button {
   background-color: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 25px;
-  color: white;
+  color: $blanco;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
@@ -126,25 +138,27 @@ body {
 }
 
 .footer {
-  display: flex;
-  align-items: center;
+  @include flex(center);
+  
   height: 100px;
   width: 100%;
   background-color: #ab88ff;
-}
-.footer a {
-  color: white;
-  font-size: 14px;
-  font-family: "Muli", sans-serif;
-  padding-left: 30px;
-  text-decoration: none;
-}
-.footer a:hover {
-  text-decoration: underline;
+  
+  a {
+    color: $blanco;
+    font-size: $tamaño-letra-estandar;
+    font-family: "Muli", sans-serif;
+    padding-left: 30px;
+    text-decoration: none;
+  }
+
+  a:hover{
+      text-decoration: underline;
+  }
 }
 
-@media only screen and (max-width: 600px) {
-  .login__container {
+@media only screen and (max-width: 600px){
+  .login__container{
     background-color: transparent;
     border: none;
     padding: 0;
@@ -152,11 +166,9 @@ body {
     box-shadow: none;
   }
 
-  .footer {
+  .footer{
     flex-direction: column;
-    display: flex;
-    align-items: flex-start;
+    @include flex(flex-start);
   }
 }
 
-/*# sourceMappingURL=inicio-sesion.css.map */
